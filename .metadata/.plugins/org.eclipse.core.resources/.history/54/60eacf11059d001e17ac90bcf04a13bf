@@ -1,0 +1,24 @@
+package pages.actions;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import utils.SeleniumDriver;
+
+public class ValidateFilterList {
+
+	public void selectMobiles() throws InterruptedException {
+		Thread.sleep(3000);
+		 WebDriverWait wait = new WebDriverWait(SeleniumDriver.getDriver(), SeleniumDriver.TIMEOUT);
+		 SeleniumDriver.getDriver().findElement(By.xpath("//div[@aria-label='mobile']")).click();
+
+	}
+	public void selectBrandName() {
+		JavascriptExecutor js = (JavascriptExecutor) SeleniumDriver.getDriver();
+		js.executeScript("window.scrollBy(0,200)");
+		SeleniumDriver.getDriver().findElement(By.xpath("//ul//li[@aria-label='Samsung']//span[text()='Samsung']")).click();
+
+	}
+
+}

@@ -1,0 +1,76 @@
+package stepdefinitions;
+
+import cucumber.api.java.en.And;
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+import pages.actions.AddToCartActions;
+import utils.SeleniumDriver;
+
+public class AddToCartSteps {
+	AddToCartActions addToCartActions = new AddToCartActions(); 
+	@Given("I am on the Home Page {string} of amazon Website")
+	public void i_am_on_the_home_page_of_amazon_website(String websiteURL) {
+	    SeleniumDriver.openPage(websiteURL);
+	}
+
+	@When("I search on Search tab")
+	public void i_search_on_search_tab() {
+		addToCartActions.clickOnSearchBar();
+	}
+
+	@And("I search the {string}")
+	public void i_search_the(String name) {
+		addToCartActions.searchIphone(name);
+	}
+
+	@And("Select iphone as {string} from searchlist")
+	public void select_iphone_as_from_searchlist(String string) {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new io.cucumber.java.PendingException();
+	}
+
+	@Then("Click on product details page of {string}")
+	public void click_on_product_details_page_of(String string) {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new io.cucumber.java.PendingException();
+	}
+
+	@And("Check new window opened")
+	public void check_new_window_opened() {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new io.cucumber.java.PendingException();
+	}
+
+	@And("Store the price in variable")
+	public void store_the_price_in_variable() {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new io.cucumber.java.PendingException();
+	}
+
+	@And("Click on {string}")
+	public void click_on(String string) {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new io.cucumber.java.PendingException();
+	}
+
+	@And("Check the popup {string}")
+	public void check_the_popup(String string) {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new io.cucumber.java.PendingException();
+	}
+
+	@Then("Moving main Window")
+	public void moving_main_window() {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new io.cucumber.java.PendingException();
+	}
+
+	@And("Check the {string} added succesfully")
+	public void check_the_added_succesfully(String string) {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new io.cucumber.java.PendingException();
+	}
+
+
+}

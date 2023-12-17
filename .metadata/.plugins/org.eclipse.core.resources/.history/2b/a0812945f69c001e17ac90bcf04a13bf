@@ -1,0 +1,66 @@
+package pages.actions;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.asserts.SoftAssert;
+
+import pages.locators.AddToCartLocators;
+import utils.SeleniumDriver;
+
+public class AddToCartActions {
+	String mainWindowHandle;
+	SoftAssert softAssert;
+
+	AddToCartLocators addToCartLocators ;
+	
+	public AddToCartActions(){
+		  this.addToCartLocators = new AddToCartLocators();
+	        PageFactory.initElements(SeleniumDriver.getDriver(), addToCartLocators);
+	    }
+	
+	public void clickOnSearchBar() {
+		  WebDriverWait wait = new WebDriverWait(SeleniumDriver.getDriver(), SeleniumDriver.TIMEOUT);
+		  System.out.println("Is click");
+		  SeleniumDriver.getDriver().findElement(By.xpath("//form[@id='nav-search-bar-form']//input[@id='twotabsearchtextbox' and @type='text']")).click();
+		//    addToCartLocators.search.click();
+		}
+	public void searchIphone(String productname) {
+		 SeleniumDriver.getDriver().findElement(By.xpath("//form[@id='nav-search-bar-form']//input[@id='twotabsearchtextbox' and @type='text']")).sendKeys(productname);
+		 WebDriverWait wait = new WebDriverWait(SeleniumDriver.getDriver(), SeleniumDriver.TIMEOUT);
+	}
+	
+	public void selectIphone15ProMax() {
+		addToCartLocators.iPhone15ProMax.click();
+	}
+	public void productDetailsPage() {
+		addToCartLocators.productDetailPage.click();
+	}
+	public void newWindowOpen() {
+		  mainWindowHandle = SeleniumDriver.getDriver().getWindowHandle();
+	      SeleniumDriver.switchToNewWindow();
+	      softAssert.assertTrue(addToCartLocators.newWindow.isDisplayed(),
+	                "Product Detail Page is open after clicking on product");
+	}
+	public void storePriceInVariable() {
+		String Price = addToCartLocators.price.getText();
+  	    System.out.println("Product Price is "+Price);
+	}
+	public void clickOnAddToCart() {
+		addToCartLocators.addToCart.click();
+	}
+	public void popupAddedToCart() {
+        softAssert.assertTrue(addToCartLocators.addedToCart.isDisplayed(), "Product is Added Successfully");
+
+	}
+	public void mainWindow() {
+		SeleniumDriver.switchToWindow(mainWindowHandle);
+	}
+	public void clickOnCart() {
+		addToCartLocators.cart.click();
+	}
+	public void productAddedSuccessful() {
+        softAssert.assertTrue(addToCartLocators.addedToCartSuccesfull.isDisplayed(),"product is present in add to cart");
+	}
+}

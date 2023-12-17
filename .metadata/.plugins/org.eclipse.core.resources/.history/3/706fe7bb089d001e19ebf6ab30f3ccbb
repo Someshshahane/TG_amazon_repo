@@ -1,0 +1,51 @@
+package pages.actions;
+
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.asserts.SoftAssert;
+
+import utils.SeleniumDriver;
+
+public class ValidateFilterListActions {
+
+	public void selectMobiles() throws InterruptedException {
+		Thread.sleep(3000);
+		WebDriverWait wait = new WebDriverWait(SeleniumDriver.getDriver(), SeleniumDriver.TIMEOUT);
+		SeleniumDriver.getDriver().findElement(By.xpath("//div[@aria-label='mobile']")).click();
+
+	}
+
+	public void selectBrandName() {
+		JavascriptExecutor js = (JavascriptExecutor) SeleniumDriver.getDriver();
+		js.executeScript("window.scrollBy(0,200)");
+		SeleniumDriver.getDriver().findElement(By.xpath("//ul//li[@aria-label='Samsung']//span[text()='Samsung']"))
+				.click();
+
+	}
+
+	public void validateProductList() throws InterruptedException {
+		Thread.sleep(3000);
+		List<WebElement> elementList = SeleniumDriver.getDriver().findElements(By.xpath("//div[@data-component-type='s-search-result']//h2"));
+
+		String searchText = "Samsung";
+
+		for (WebElement product : elementList) {
+			if (product.getText().contains(searchText)) {
+				assertEquals(product.getText()==searchText);
+				System.out.println("Samsung is present in: " + product.getText());
+			} else {
+				System.out.println("Samsung is NOT present in: " + product.getText());
+			}
+		}
+
+	}
+}

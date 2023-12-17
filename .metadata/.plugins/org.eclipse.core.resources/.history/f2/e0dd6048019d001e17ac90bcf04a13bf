@@ -1,0 +1,17 @@
+@ValidateList
+Feature: product is shown ss per applying the Filter 
+
+  Scenario: Validate product List
+    Given I am on the Home Page "https://www.amazon.in" of amazon Website
+    When I search on Search tab
+    And I search the "Mobile"
+    And Select Mobile
+    Then Click on product details page
+    And Check new window opened
+    And Store the price in variable
+    And Click on Add to Cart 
+    And Check the popup Added to Cart
+    Then Moving main Window
+    And Click on Cart
+    And Check the product added succesfully
+    

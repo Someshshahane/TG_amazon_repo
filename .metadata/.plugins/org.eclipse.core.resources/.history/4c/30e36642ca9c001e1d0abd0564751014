@@ -1,0 +1,15 @@
+package pages.locators;
+
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
+
+public class AddToCartLocators {
+	
+	@FindBy(how=How.XPATH,using="//input[@id='twotabsearchtextbox']")
+	public WebElement search;
+	
+	@FindBy(how=How.XPATH,using="//div[@aria-label='iphone 15 pro max']")
+	public WebElement iPhone15ProMax;
+
+}

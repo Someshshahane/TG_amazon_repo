@@ -1,0 +1,35 @@
+package pages.locators;
+
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
+
+public class AddToCartLocators {
+	
+	@FindBy(how=How.XPATH,using="//input[@id='twotabsearchtextbox']")
+	public WebElement search;
+	
+	@FindBy(how=How.XPATH,using="//div[@aria-label='iphone 15 pro max']")
+	public WebElement iPhone15ProMax;
+	
+	@FindBy(how=How.LINK_TEXT,using="Apple iPhone 15 Pro Max (256 GB) - Natural Titanium")
+	public WebElement productDetailPage;
+
+	@FindBy(how=How.ID,using="productTitle")
+	public WebElement newWindow;
+	
+	@FindBy(how=How.CLASS_NAME,using="a-price aok-align-center reinventPricePriceToPayMargin priceToPay")
+	public WebElement price;
+	
+	@FindBy(how=How.XPATH,using="//div[@id='addToCart_feature_div']//input[@type='submit']")
+	public WebElement addToCart;
+	
+	@FindBy(how=How.XPATH,using="//div[@id='attach-added-to-cart-message']//h4[text()='Added to Cart']")
+	public WebElement addedToCart;
+	
+	@FindBy(how=How.ID,using="nav-cart-count-container")
+	public WebElement cart;
+	
+	@FindBy(how=How.XPATH,using="//span[text()='Apple iPhone 15 Pro Max (256 GB) - Natural Titanium' and @class='a-truncate-cut']")
+	public WebElement addedToCartSuccesfull;
+}

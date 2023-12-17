@@ -1,0 +1,34 @@
+package runners;
+
+
+@CucumberOptions(
+        features = "src/test/resources/FeaturesFiles/AddToCart.feature",
+        glue = {"stepdefinitions"},
+        tags = "@Add-To-Cart",   
+		plugin = {"json:target/RunnerClass/CucumberReport.json",
+				"pretty", 
+				"html:target/RunnerClass/CucumberReport.html",
+				"com.cucumber.listener.ExtentCucumberFormatter"}
+             
+        )
+public class RunnerClass extends AbstractTestNGCucumberTests{
+	// Initiates the extent report and generates the output in the output/Run_<unique timestamp>/report.html file by default.
+			SimpleDateFormat sdf = new SimpleDateFormat("ddMMyyyy_hhmmss");
+			Date curDate = new Date();
+			String strDate = sdf.format(curDate);
+			String fileName = System.getProperty("user.dir")+"\\target\\Extent_Reports\\" + strDate+".html";
+			File newFile = new File(fileName);
+			ExtentCucumberFormatter.initiateExtentCucumberFormatter(newFile,false);
+			//static report name
+			//ExtentCucumberFormatter.initiateExtentCucumberFormatter(new File("F:\\cucumber-testing-master\\ExtenReports\\extentreports.html"),false);
+	        // Loads the extent config xml to customize on the report.
+	        ExtentCucumberFormatter.loadConfig(new File("src/test/resources/extent-config.xml"));
+
+	        // User can add the system information as follows
+	        ExtentCucumberFormatter.addSystemInfo("Browser Name", "Firefox");
+	        ExtentCucumberFormatter.addSystemInfo("Browser version", "v31.0");
+	        ExtentCucumberFormatter.addSystemInfo("Selenium version", "v2.53.0");
+
+	
+	}
+

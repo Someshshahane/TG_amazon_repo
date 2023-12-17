@@ -1,0 +1,13 @@
+package stepdefinitions;
+
+
+
+public class AfterActions {
+
+    @After
+    public static void tearDown() {
+    	
+  
+    SeleniumDriver.tearDown();
+    }
+}

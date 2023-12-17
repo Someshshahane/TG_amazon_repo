@@ -1,0 +1,20 @@
+@Add-To-Cart
+Feature: The product is successfully added to the cart.
+
+  @testcase1
+  Scenario: Validate product addition to cart
+    Given I am on the Home Page "https://www.amazon.in" of amazon Website
+    When I search on "Search" tab
+    And I search the "iphone"
+    And Select iphone as "iphone 15 pro max" from searchlist
+    Then Click on product details page of "Apple iPhone 15 Pro Max (256 GB) - Natural Titanium"
+    And Check new window opened
+    And Store the price in variable
+    And Click on "Add to Cart" 
+    And Check the popup "Added to Cart"
+    Then Moving main Window
+    And Click on "Cart"
+    And Check the "Apple iPhone 15 Pro Max (256 GB) - Natural Titanium" added succesfully
+    
+
+  
